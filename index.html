@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizador de Aulas — Prometeu | App para professores organizarem aulas em vídeo</title>
+<meta name="description" content="App 100% offline para professores organizarem aulas em vídeo: Matéria → Série → Aula → Capítulo → Vídeo. Resumos, anexos, relatórios em Word/PDF, 5 temas e 4 idiomas.">
+<meta property="og:title" content="Organizador de Aulas — Prometeu">
+<meta property="og:description" content="Organize suas aulas em vídeo, do jeito de um professor. 100% offline.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050b13; --bg2:#081420; --card:#0a1a28; --card2:#0e2436;
+  --txt:#e3f6ff; --txt2:#8fb6cc; --txt3:#4f7183;
+  --acc:#22d3ee; --acc2:#0ea5b7; --gl:rgba(34,211,238,.35);
+  --brd:rgba(34,211,238,.18); --brd2:rgba(255,255,255,.06);
+  --maxw:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Rajdhani',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55;overflow-x:hidden;font-size:17px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.10),transparent 60%),
+             radial-gradient(900px 500px at -10% 20%,rgba(14,165,183,.08),transparent 55%);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative;z-index:1}
+h1,h2,h3,.brand,.eyebrow,.badge{font-family:'Orbitron',sans-serif}
+a{color:inherit;text-decoration:none}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);font-weight:700}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(5,11,19,.72);border-bottom:1px solid var(--brd2)}
+.nav-in{display:flex;align-items:center;gap:14px;height:62px}
+.brand{font-weight:900;font-size:16px;letter-spacing:1px;display:flex;align-items:center;gap:9px}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc)}
+.nav-links{margin-left:auto;display:flex;gap:22px;align-items:center}
+.nav-links a{color:var(--txt2);font-size:15px;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.lang{display:flex;gap:2px;border:1px solid var(--brd);border-radius:20px;overflow:hidden}
+.lang button{background:none;border:none;color:var(--txt2);padding:5px 11px;font-family:'Orbitron';font-size:11px;font-weight:700;cursor:pointer}
+.lang button.on{background:var(--acc);color:#04121a}
+@media(max-width:720px){.nav-links a.hide-m{display:none}}
+
+/* HERO */
+.hero{padding:70px 0 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.05;font-weight:800;margin:16px 0 14px;letter-spacing:.5px}
+.hero h1 .cy{color:var(--acc);text-shadow:0 0 24px var(--gl)}
+.hero p.lead{font-size:19px;color:var(--txt2);max-width:520px;margin-bottom:12px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 26px}
+.flow span{font-family:'Orbitron';font-size:11px;letter-spacing:1px;padding:5px 11px;border:1px solid var(--brd);border-radius:6px;color:var(--txt2)}
+.flow i{color:var(--acc);align-self:center;font-style:normal}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:10px;font-family:'Orbitron';font-weight:700;font-size:14px;letter-spacing:.5px;cursor:pointer;border:1px solid var(--acc);transition:transform .15s,box-shadow .2s}
+.btn.pri{background:var(--acc);color:#04121a;box-shadow:0 6px 26px var(--gl)}
+.btn.pri:hover{transform:translateY(-2px);box-shadow:0 10px 32px var(--gl)}
+.btn.sec{background:transparent;color:var(--acc)}
+.btn.sec:hover{background:rgba(34,211,238,.08)}
+
+/* PHONE MOCKUP */
+.mock{justify-self:center;width:270px;height:552px;border-radius:34px;background:linear-gradient(160deg,#0d2233,#071521);border:1px solid var(--brd);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 6px rgba(34,211,238,.05),0 0 60px var(--gl);padding:14px 12px;position:relative;overflow:hidden}
+.mock::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:96px;height:6px;border-radius:6px;background:rgba(255,255,255,.12)}
+.m-top{margin-top:18px;display:flex;align-items:center;gap:8px;padding:6px 4px 12px;border-bottom:1px solid var(--brd2)}
+.m-top .mb{width:22px;height:3px;background:var(--txt2);border-radius:3px;box-shadow:0 6px 0 var(--txt2),0 12px 0 var(--txt2)}
+.m-title{font-family:'Orbitron';font-size:12px;font-weight:700;letter-spacing:.5px}
+.m-chip{margin-left:auto;font-family:'Orbitron';font-size:8px;padding:3px 8px;border:1px solid var(--brd);border-radius:12px;color:var(--acc)}
+.m-card{margin-top:10px;background:var(--card);border:1px solid var(--brd);border-left:3px solid var(--acc);border-radius:10px;padding:10px 11px}
+.m-card .t{font-weight:700;font-size:13px}
+.m-card .s{font-size:11px;color:var(--txt2)}
+.m-card .bar{margin-top:7px;display:flex;gap:3px}
+.m-card .bar i{height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.08)}
+.m-card .bar i.on{background:var(--acc);box-shadow:0 0 6px var(--gl)}
+.m-pend{color:var(--acc);font-weight:700}
+.m-fab{position:absolute;left:12px;right:12px;bottom:16px;background:var(--acc);color:#04121a;text-align:center;font-family:'Orbitron';font-weight:700;font-size:12px;padding:12px;border-radius:12px;box-shadow:0 8px 24px var(--gl)}
+
+/* TRUST */
+.trust{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;padding:22px;border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2);margin-top:20px}
+.trust div{font-size:14px;color:var(--txt2);display:flex;align-items:center;gap:8px}
+.trust b{color:var(--acc)}
+
+/* SECTIONS */
+section{padding:66px 0}
+.sec-h{text-align:center;max-width:640px;margin:0 auto 42px}
+.sec-h h2{font-size:clamp(24px,3.6vw,34px);font-weight:800;margin:10px 0}
+.sec-h p{color:var(--txt2);font-size:17px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--brd);border-radius:14px;padding:22px;transition:transform .18s,border-color .2s}
+.feat:hover{transform:translateY(-4px);border-color:var(--acc)}
+.feat .ic{width:46px;height:46px;border-radius:11px;background:rgba(34,211,238,.1);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feat .ic svg{width:24px;height:24px;stroke:var(--acc);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:17px;font-family:'Rajdhani';font-weight:700;margin-bottom:6px}
+.feat p{color:var(--txt2);font-size:15px}
+
+/* FLOW DIAGRAM */
+.steps{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;align-items:stretch}
+.step{flex:1;min-width:150px;max-width:190px;background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:18px 14px;text-align:center;position:relative}
+.step .n{font-family:'Orbitron';font-size:11px;color:var(--acc)}
+.step .l{font-family:'Orbitron';font-weight:700;font-size:15px;margin-top:6px}
+.step .d{font-size:13px;color:var(--txt2);margin-top:6px}
+.step::after{content:"›";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--acc);font-size:26px;font-family:'Orbitron'}
+.step:last-child::after{display:none}
+@media(max-width:860px){.step::after{display:none}}
+
+/* PRICING */
+.price{max-width:460px;margin:0 auto;background:linear-gradient(180deg,var(--card2),var(--bg2));border:1px solid var(--acc);border-radius:18px;padding:34px;text-align:center;box-shadow:0 0 50px var(--gl)}
+.price .tag{font-family:'Orbitron';font-size:12px;letter-spacing:2px;color:var(--acc)}
+.price .val{font-family:'Orbitron';font-size:46px;font-weight:900;margin:8px 0 2px}
+.price .val small{font-size:18px;color:var(--txt2)}
+.price .sub{color:var(--txt2);margin-bottom:18px}
+.price ul{list-style:none;text-align:left;margin:18px 0;display:inline-block}
+.price li{padding:6px 0;color:var(--txt);font-size:15px;display:flex;gap:10px;align-items:center}
+.price li::before{content:"✓";color:var(--acc);font-weight:900}
+
+/* INSTALL */
+.install{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.icard{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:24px}
+.icard h3{font-family:'Rajdhani';font-size:19px;margin-bottom:10px}
+.icard ol{margin-left:18px;color:var(--txt2);font-size:15px}
+.icard ol li{margin-bottom:6px}
+.stores{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.store{border:1px solid var(--brd);border-radius:10px;padding:10px 16px;font-family:'Orbitron';font-size:12px;color:var(--txt2)}
+.store b{color:var(--txt);font-size:14px;display:block}
+.soon{color:var(--acc);font-size:10px;letter-spacing:1px}
+
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--brd2);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq summary{padding:16px 18px;cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--acc);font-family:'Orbitron';font-size:20px}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 18px 16px;color:var(--txt2);font-size:15px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
+.foot{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.foot a{color:var(--txt2);font-size:14px;margin-right:16px}
+.foot a:hover{color:var(--acc)}
+.foot .cr{color:var(--txt3);font-size:13px}
+.mailtag{color:var(--acc)}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
+  .hero .lead,.flow{margin-left:auto;margin-right:auto}
+  .flow,.cta{justify-content:center}
+  .grid{grid-template-columns:1fr}
+  .install{grid-template-columns:1fr}
+  .mock{order:-1}
+}
+</style>
+</head>
+<body class="pt">
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand"><span class="dot"></span> ORGANIZADOR DE AULAS</div>
+    <div class="nav-links">
+      <a href="#recursos" class="hide-m" data-i="nav1">Recursos</a>
+      <a href="#como" class="hide-m" data-i="nav2">Como funciona</a>
+      <a href="#preco" class="hide-m" data-i="nav3">Preço</a>
+      <a href="#instalar" data-i="nav4">Instalar</a>
+      <div class="lang">
+        <button onclick="setL('pt')" id="lpt" class="on">PT</button>
+        <button onclick="setL('en')" id="len">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div>
+    <div class="eyebrow" data-i="eyebrow">PWA · 100% Offline</div>
+    <h1 data-i="h1">Organize suas aulas em vídeo, <span class="cy">do jeito de um professor.</span></h1>
+    <p class="lead" data-i="lead">Um caderno digital para quem ensina com vídeos: cinco níveis do geral ao específico, resumos, anexos e relatórios — tudo salvo no seu aparelho, funcionando sem internet.</p>
+    <div class="flow">
+      <span data-i="f1">MATÉRIA</span><i>›</i><span data-i="f2">SÉRIE</span><i>›</i><span data-i="f3">AULA</span><i>›</i><span data-i="f4">CAPÍTULO</span><i>›</i><span data-i="f5">VÍDEO</span>
+    </div>
+    <div class="cta">
+      <a class="btn pri" href="https://arimardiego-afk.github.io/organizador-de-aulas/" target="_blank" rel="noopener" data-i="cta1">▶ Testar grátis (14 dias)</a>
+      <a class="btn sec" href="#instalar" data-i="cta2">Como instalar</a>
+    </div>
+  </div>
+  <div class="mock" aria-hidden="true">
+    <div class="m-top"><span class="mb"></span><span class="m-title">AULAS</span><span class="m-chip">2026</span></div>
+    <div class="m-card"><div class="t">HISTÓRIA</div><div class="s">3 séries · 54 aulas · <span class="m-pend">● 12 a ministrar</span></div><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+    <div class="m-card"><div class="t">GEOGRAFIA</div><div class="s">2 séries · 31 aulas</div><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+    <div class="m-card"><div class="t">BIOLOGIA</div><div class="s">1 série · 18 aulas</div><div class="bar"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="m-fab" data-i="mfab">+ NOVA MATÉRIA</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="trust">
+    <div data-i="t1">🔒 <b>Sem contas</b>, sem anúncios</div>
+    <div data-i="t2">📴 Funciona <b>offline</b></div>
+    <div data-i="t3">💾 Dados <b>no seu aparelho</b></div>
+    <div data-i="t4">🌐 <b>4 idiomas</b></div>
+  </div>
+</div>
+
+<section id="recursos" class="wrap">
+  <div class="sec-h">
+    <div class="eyebrow" data-i="s1e">Recursos</div>
+    <h2 data-i="s1h">Feito para o dia a dia de quem dá aula</h2>
+    <p data-i="s1p">Tudo que um professor precisa para preparar e acompanhar suas aulas em vídeo — sem planilha, sem confusão.</p>
+  </div>
+  <div class="grid">
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H7a2 2 0 0 1-2-2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3 data-i="feat1t">Hierarquia de 5 níveis</h3><p data-i="feat1p">Matéria → Série/Ano → Aula → Capítulo → Vídeo. Cada aula no seu lugar, fácil de achar.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a12 12 0 0 0 8.5 3 12 12 0 0 1-8.5 15 12 12 0 0 1-8.5-15A12 12 0 0 0 12 3"/></svg></div><h3 data-i="feat2t">100% offline e privado</h3><p data-i="feat2p">Os dados ficam só no seu aparelho. Nada é enviado para a internet — nem precisa dela.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"/><path d="M9 9h1M9 13h6M9 17h6"/></svg></div><h3 data-i="feat3t">Resumos e anexos</h3><p data-i="feat3p">Resumo por vídeo (até 3 páginas), materiais citados e documentos (PDF, imagem, Word) anexados.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6"/><path d="M18 12V7a2 2 0 0 0-2-2h-2"/><path d="M8 3h4v3H8z"/><path d="M8 11h4M8 15h3"/><circle cx="16.5" cy="17.5" r="2.5"/></svg></div><h3 data-i="feat4t">Relatórios Word e PDF</h3><p data-i="feat4p">Exporte a estrutura completa da série ou o resumo de um vídeo em um clique.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0-18c4.97 0 9 3.58 9 8 0 2.2-1.8 4-4 4h-2.5a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="12.5" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/></svg></div><h3 data-i="feat5t">5 temas visuais</h3><p data-i="feat5p">Do claro suave ao HUD sci-fi ciano do Prometeu. Escolha o que combina com você.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h7M9 3v2c0 4.4-2.2 8-5 8"/><path d="M5 9c0 2.1 3 3.9 6.7 4"/><path d="M12 20l4-9 4 9M19.1 18h-6.2"/></svg></div><h3 data-i="feat6t">4 idiomas</h3><p data-i="feat6p">Português (Brasil e Portugal), inglês, espanhol e mandarim — troca com um toque.</p></div>
+  </div>
+</section>
+
+<section id="como" class="wrap">
+  <div class="sec-h">
+    <div class="eyebrow" data-i="s2e">Como funciona</div>
+    <h2 data-i="s2h">Do geral ao específico, em cinco passos</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="l" data-i="st1l">MATÉRIA</div><div class="d" data-i="st1d">Ex.: História, Biologia</div></div>
+    <div class="step"><div class="n">02</div><div class="l" data-i="st2l">SÉRIE/ANO</div><div class="d" data-i="st2d">Ex.: 2º ano do E.M.</div></div>
+    <div class="step"><div class="n">03</div><div class="l" data-i="st3l">AULA</div><div class="d" data-i="st3d">Ex.: Revolução Francesa</div></div>
+    <div class="step"><div class="n">04</div><div class="l" data-i="st4l">CAPÍTULO</div><div class="d" data-i="st4d">Marca o que já foi dado</div></div>
+    <div class="step"><div class="n">05</div><div class="l" data-i="st5l">VÍDEO</div><div class="d" data-i="st5d">Link, resumo e anexos</div></div>
+  </div>
+</section>
+
+<section id="preco" class="wrap">
+  <div class="sec-h">
+    <div class="eyebrow" data-i="s3e">Preço justo</div>
+    <h2 data-i="s3h">Teste por 14 dias. Depois, um valor único.</h2>
+    <p data-i="s3p">Sem assinatura, sem cobrança mensal. Pague uma vez e use para sempre.</p>
+  </div>
+  <div class="price">
+    <div class="tag" data-i="pr-tag">LICENÇA VITALÍCIA</div>
+    <div class="val">US$ 5 <small>≈ R$ 25</small></div>
+    <div class="sub" data-i="pr-sub">pagamento único · sem assinatura</div>
+    <ul>
+      <li data-i="pr1">14 dias grátis com tudo liberado</li>
+      <li data-i="pr2">Seus dados nunca ficam bloqueados</li>
+      <li data-i="pr3">Ver e exportar sempre disponível</li>
+      <li data-i="pr4">Atualizações incluídas</li>
+    </ul>
+    <div><a class="btn pri" href="https://arimardiego-afk.github.io/organizador-de-aulas/" target="_blank" rel="noopener" data-i="pr-cta">Começar teste grátis</a></div>
+  </div>
+</section>
+
+<section id="instalar" class="wrap">
+  <div class="sec-h">
+    <div class="eyebrow" data-i="s4e">Instalar</div>
+    <h2 data-i="s4h">No celular, tablet ou computador</h2>
+  </div>
+  <div class="install">
+    <div class="icard">
+      <h3 data-i="i1h">📱 Android / Tablet (recomendado)</h3>
+      <ol>
+        <li data-i="i1s1">Abra o app no Chrome pelo botão acima.</li>
+        <li data-i="i1s2">Toque no menu ⋮ do Chrome.</li>
+        <li data-i="i1s3">Escolha “Instalar aplicativo”.</li>
+        <li data-i="i1s4">Pronto — abre em tela cheia, como um app.</li>
+      </ol>
+      <div class="stores">
+        <div class="store"><span class="soon" data-i="soon">EM BREVE</span><b>Google Play</b></div>
+        <div class="store"><span class="soon" data-i="soon2">EM BREVE</span><b>AppGallery</b></div>
+      </div>
+    </div>
+    <div class="icard">
+      <h3 data-i="i2h">💻 Computador</h3>
+      <ol>
+        <li data-i="i2s1">Abra o link no Chrome ou Edge.</li>
+        <li data-i="i2s2">Clique no ícone de instalar na barra de endereço.</li>
+        <li data-i="i2s3">Use como um programa normal, offline.</li>
+      </ol>
+      <p style="color:var(--txt2);font-size:14px;margin-top:12px" data-i="i2note">Também funciona direto no navegador, sem instalar nada.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap faq">
+  <div class="sec-h">
+    <div class="eyebrow" data-i="s5e">Dúvidas</div>
+    <h2 data-i="s5h">Perguntas frequentes</h2>
+  </div>
+  <details><summary data-i="q1">Precisa de internet?</summary><p data-i="a1">Não. O app funciona 100% offline. A internet só é usada, opcionalmente, para buscar o título de um vídeo do YouTube quando você cola o link.</p></details>
+  <details><summary data-i="q2">Onde ficam meus dados?</summary><p data-i="a2">Somente no seu aparelho, no armazenamento do navegador. Nada é enviado para servidores. Você pode exportar um backup em arquivo quando quiser.</p></details>
+  <details><summary data-i="q3">Preciso criar conta?</summary><p data-i="a3">Não. Não há cadastro, login nem senha. É só abrir e usar.</p></details>
+  <details><summary data-i="q4">Funciona no tablet?</summary><p data-i="a4">Sim, e muito bem — com tela dividida e janela flutuante (One UI da Samsung), ideal para assistir ao vídeo e organizar ao mesmo tempo.</p></details>
+  <details><summary data-i="q5">O que acontece depois dos 14 dias?</summary><p data-i="a5">Você continua vendo e exportando tudo o que criou — nada fica bloqueado. Após ativar, volta a criar novos conteúdos livremente.</p></details>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="https://arimardiego-afk.github.io/organizador-de-aulas/privacidade.html" target="_blank" rel="noopener" data-i="fp">Privacidade</a>
+      <a href="https://arimardiego-afk.github.io/organizador-de-aulas/termos.html" target="_blank" rel="noopener" data-i="ft">Termos de uso</a>
+      <a href="mailto:organizadordeaulas.prometeu@gmail.com" class="mailtag" id="mailLink">organizadordeaulas.prometeu@gmail.com</a>
+    </div>
+    <div class="cr">© 2026 Arimar Diego França da Silva · <span data-i="fcr">Todos os direitos reservados</span></div>
+  </div>
+</footer>
+
+<script>
+/* Traduções PT/EN. innerHTML para permitir <span> no H1. */
+const I={
+  nav1:['Recursos','Features'], nav2:['Como funciona','How it works'], nav3:['Preço','Pricing'], nav4:['Instalar','Install'],
+  eyebrow:['PWA · 100% Offline','PWA · 100% Offline'],
+  h1:['Organize suas aulas em vídeo, <span class="cy">do jeito de um professor.</span>','Organize your video lessons <span class="cy">the way a teacher would.</span>'],
+  lead:['Um caderno digital para quem ensina com vídeos: cinco níveis do geral ao específico, resumos, anexos e relatórios — tudo salvo no seu aparelho, funcionando sem internet.','A digital notebook for teaching with videos: five levels from broad to specific, summaries, attachments and reports — all saved on your device, working without internet.'],
+  f1:['MATÉRIA','SUBJECT'], f2:['SÉRIE','GRADE'], f3:['AULA','LESSON'], f4:['CAPÍTULO','CHAPTER'], f5:['VÍDEO','VIDEO'],
+  cta1:['▶ Testar grátis (14 dias)','▶ Try free (14 days)'], cta2:['Como instalar','How to install'],
+  mfab:['+ NOVA MATÉRIA','+ NEW SUBJECT'],
+  t1:['🔒 <b>Sem contas</b>, sem anúncios','🔒 <b>No accounts</b>, no ads'], t2:['📴 Funciona <b>offline</b>','📴 Works <b>offline</b>'],
+  t3:['💾 Dados <b>no seu aparelho</b>','💾 Data <b>on your device</b>'], t4:['🌐 <b>4 idiomas</b>','🌐 <b>4 languages</b>'],
+  s1e:['Recursos','Features'], s1h:['Feito para o dia a dia de quem dá aula','Built for a teacher\'s daily routine'],
+  s1p:['Tudo que um professor precisa para preparar e acompanhar suas aulas em vídeo — sem planilha, sem confusão.','Everything a teacher needs to prepare and track video lessons — no spreadsheets, no mess.'],
+  feat1t:['Hierarquia de 5 níveis','5-level hierarchy'], feat1p:['Matéria → Série/Ano → Aula → Capítulo → Vídeo. Cada aula no seu lugar, fácil de achar.','Subject → Grade → Lesson → Chapter → Video. Every lesson in its place, easy to find.'],
+  feat2t:['100% offline e privado','100% offline & private'], feat2p:['Os dados ficam só no seu aparelho. Nada é enviado para a internet — nem precisa dela.','Data stays only on your device. Nothing is sent online — and it doesn\'t need to be.'],
+  feat3t:['Resumos e anexos','Summaries & attachments'], feat3p:['Resumo por vídeo (até 3 páginas), materiais citados e documentos (PDF, imagem, Word) anexados.','Per-video summary (up to 3 pages), cited materials and attached documents (PDF, image, Word).'],
+  feat4t:['Relatórios Word e PDF','Word & PDF reports'], feat4p:['Exporte a estrutura completa da série ou o resumo de um vídeo em um clique.','Export the full grade structure or a video summary in one click.'],
+  feat5t:['5 temas visuais','5 visual themes'], feat5p:['Do claro suave ao HUD sci-fi ciano do Prometeu. Escolha o que combina com você.','From soft light to the cyan Prometheus sci-fi HUD. Pick what suits you.'],
+  feat6t:['4 idiomas','4 languages'], feat6p:['Português (Brasil e Portugal), inglês, espanhol e mandarim — troca com um toque.','Portuguese (Brazil & Portugal), English, Spanish and Mandarin — switch with one tap.'],
+  s2e:['Como funciona','How it works'], s2h:['Do geral ao específico, em cinco passos','From broad to specific, in five steps'],
+  st1l:['MATÉRIA','SUBJECT'], st1d:['Ex.: História, Biologia','E.g.: History, Biology'],
+  st2l:['SÉRIE/ANO','GRADE/YEAR'], st2d:['Ex.: 2º ano do E.M.','E.g.: 11th grade'],
+  st3l:['AULA','LESSON'], st3d:['Ex.: Revolução Francesa','E.g.: French Revolution'],
+  st4l:['CAPÍTULO','CHAPTER'], st4d:['Marca o que já foi dado','Marks what was taught'],
+  st5l:['VÍDEO','VIDEO'], st5d:['Link, resumo e anexos','Link, summary & attachments'],
+  s3e:['Preço justo','Fair price'], s3h:['Teste por 14 dias. Depois, um valor único.','Try for 14 days. Then, a one-time price.'],
+  s3p:['Sem assinatura, sem cobrança mensal. Pague uma vez e use para sempre.','No subscription, no monthly fee. Pay once, use forever.'],
+  'pr-tag':['LICENÇA VITALÍCIA','LIFETIME LICENSE'], 'pr-sub':['pagamento único · sem assinatura','one-time payment · no subscription'],
+  pr1:['14 dias grátis com tudo liberado','14 days free, fully unlocked'], pr2:['Seus dados nunca ficam bloqueados','Your data is never locked'],
+  pr3:['Ver e exportar sempre disponível','Viewing & export always available'], pr4:['Atualizações incluídas','Updates included'],
+  'pr-cta':['Começar teste grátis','Start free trial'],
+  s4e:['Instalar','Install'], s4h:['No celular, tablet ou computador','On phone, tablet or computer'],
+  i1h:['📱 Android / Tablet (recomendado)','📱 Android / Tablet (recommended)'],
+  i1s1:['Abra o app no Chrome pelo botão acima.','Open the app in Chrome via the button above.'], i1s2:['Toque no menu ⋮ do Chrome.','Tap Chrome\'s ⋮ menu.'],
+  i1s3:['Escolha “Instalar aplicativo”.','Choose “Install app”.'], i1s4:['Pronto — abre em tela cheia, como um app.','Done — it opens full screen, like an app.'],
+  soon:['EM BREVE','SOON'], soon2:['EM BREVE','SOON'],
+  i2h:['💻 Computador','💻 Computer'], i2s1:['Abra o link no Chrome ou Edge.','Open the link in Chrome or Edge.'],
+  i2s2:['Clique no ícone de instalar na barra de endereço.','Click the install icon in the address bar.'], i2s3:['Use como um programa normal, offline.','Use it like a normal program, offline.'],
+  i2note:['Também funciona direto no navegador, sem instalar nada.','It also works right in the browser, with no install.'],
+  s5e:['Dúvidas','FAQ'], s5h:['Perguntas frequentes','Frequently asked questions'],
+  q1:['Precisa de internet?','Does it need internet?'], a1:['Não. O app funciona 100% offline. A internet só é usada, opcionalmente, para buscar o título de um vídeo do YouTube quando você cola o link.','No. The app works 100% offline. Internet is only used, optionally, to fetch a YouTube video title when you paste the link.'],
+  q2:['Onde ficam meus dados?','Where is my data?'], a2:['Somente no seu aparelho, no armazenamento do navegador. Nada é enviado para servidores. Você pode exportar um backup em arquivo quando quiser.','Only on your device, in the browser storage. Nothing goes to servers. You can export a file backup anytime.'],
+  q3:['Preciso criar conta?','Do I need an account?'], a3:['Não. Não há cadastro, login nem senha. É só abrir e usar.','No. No sign-up, login or password. Just open and use.'],
+  q4:['Funciona no tablet?','Does it work on tablets?'], a4:['Sim, e muito bem — com tela dividida e janela flutuante (One UI da Samsung), ideal para assistir ao vídeo e organizar ao mesmo tempo.','Yes, very well — with split screen and pop-up window (Samsung One UI), great for watching and organizing at once.'],
+  q5:['O que acontece depois dos 14 dias?','What happens after 14 days?'], a5:['Você continua vendo e exportando tudo o que criou — nada fica bloqueado. Após ativar, volta a criar novos conteúdos livremente.','You keep viewing and exporting everything you made — nothing is locked. After activating, you create new content freely again.'],
+  fp:['Privacidade','Privacy'], ft:['Termos de uso','Terms of use'], fcr:['Todos os direitos reservados','All rights reserved']
+};
+function setL(l){
+  document.documentElement.lang=l==='pt'?'pt-BR':'en';
+  document.getElementById('lpt').classList.toggle('on',l==='pt');
+  document.getElementById('len').classList.toggle('on',l==='en');
+  const i=l==='pt'?0:1;
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=I[el.getAttribute('data-i')];if(v)el.innerHTML=v[i];});
+}
+</script>
+</body>
+</html>
