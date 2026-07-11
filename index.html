@@ -74,7 +74,7 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:var(-
 
 /* Animação de abertura: apresenta os 5 modos de cor (1ª visita) */
 .themes{position:relative}
-.theme-tip{position:absolute;top:calc(100% + 12px);right:-8px;background:var(--card2);border:1px solid var(--acc);border-radius:10px;padding:9px 13px;font-size:14px;font-weight:600;color:var(--txt);white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 20px var(--gl);opacity:0;pointer-events:none;transition:opacity .25s;z-index:60}
+.theme-tip{position:absolute;top:calc(100% + 12px);right:-8px;background:var(--card2);border:1px solid var(--acc);border-radius:10px;padding:11px 16px;font-size:16px;font-weight:700;color:var(--txt);white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 20px var(--gl);opacity:0;pointer-events:none;transition:opacity .25s;z-index:60}
 .theme-tip::before{content:"";position:absolute;top:-6px;right:40px;width:10px;height:10px;background:var(--card2);border-left:1px solid var(--acc);border-top:1px solid var(--acc);transform:rotate(45deg)}
 .theme-tip.show{opacity:1}
 @media (prefers-reduced-motion:no-preference){
@@ -597,18 +597,22 @@ buildMarquee();
     timers.push(setTimeout(done,9000));
     return;
   }
+  /* Passeia devagar por TODOS os 5 modos — o site inteiro muda de cara a cada
+     parada, espelhando os temas do app — e termina convidando a escolher. */
+  const DWELL=2200; // tempo parado em cada modo
   const order=['PB','PR','D','L',t]; // termina no tema salvo/padrão
   timers.push(setTimeout(()=>{
     tip.classList.add('show');
+    txt.textContent=THEME_LABEL[t]?THEME_LABEL[t][li]:t; // nomeia o modo inicial
     order.forEach((tt,k)=>{
       timers.push(setTimeout(()=>{
         if(cancelled)return;
         applyTheme(tt);
         txt.textContent=(k<order.length-1)?(THEME_LABEL[tt]?THEME_LABEL[tt][li]:tt):TIP_INVITE[li];
-        if(k===order.length-1){th.classList.add('intro');timers.push(setTimeout(done,6000));}
-      },k*900));
+        if(k===order.length-1){th.classList.add('intro');timers.push(setTimeout(done,7000));}
+      },(k+1)*DWELL));
     });
-  },1100));
+  },900));
 })();
 </script>
 </body>
