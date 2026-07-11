@@ -15,12 +15,14 @@
   --brd:rgba(34,211,238,.18);--brd2:rgba(255,255,255,.06);
   --glow1:rgba(34,211,238,.10);--glow2:rgba(14,165,183,.08);
   --nav:rgba(5,11,19,.72);--btxt:#04121a;--htmlbg:#050b13;
+  --font-h:'Orbitron',sans-serif;--font-b:'Rajdhani',system-ui,sans-serif;
 }
 html.t-D{ --bg:#000;--bg2:#070707;--card:#0d0d0d;--card2:#141414;
   --txt:#fff;--txt2:#b8b8b8;--txt3:#6f6f6f;--acc:#f2f2f2;--acc2:#cfcfcf;
   --gl:rgba(255,255,255,.22);--brd:rgba(255,255,255,.16);--brd2:rgba(255,255,255,.06);
   --glow1:rgba(255,255,255,.05);--glow2:rgba(255,255,255,.03);
-  --nav:rgba(0,0,0,.8);--btxt:#000;--htmlbg:#000; }
+  --nav:rgba(0,0,0,.8);--btxt:#000;--htmlbg:#000;
+  --font-h:'Segoe UI',system-ui,Arial,sans-serif;--font-b:'Segoe UI',system-ui,Arial,sans-serif; }
 html.t-PR{ --bg:#120407;--bg2:#1a060a;--card:#1f0a10;--card2:#2a0e15;
   --txt:#ffe6ea;--txt2:#e0a3ad;--txt3:#8a5560;--acc:#ff3b5c;--acc2:#c62740;
   --gl:rgba(255,59,92,.33);--brd:rgba(255,59,92,.20);--brd2:rgba(255,255,255,.06);
@@ -35,15 +37,16 @@ html.t-L{ --bg:#F0EDE8;--bg2:#e7e2da;--card:#ffffff;--card2:#faf7f2;
   --txt:#2a2320;--txt2:#6b5f57;--txt3:#9a8d83;--acc:#c0563c;--acc2:#a5432b;
   --gl:rgba(192,86,60,.22);--brd:rgba(192,86,60,.22);--brd2:rgba(0,0,0,.08);
   --glow1:rgba(192,86,60,.08);--glow2:rgba(165,67,43,.05);
-  --nav:rgba(255,255,255,.82);--btxt:#fff;--htmlbg:#F0EDE8; }
+  --nav:rgba(255,255,255,.82);--btxt:#fff;--htmlbg:#F0EDE8;
+  --font-h:'Segoe UI',system-ui,Arial,sans-serif;--font-b:'Segoe UI',system-ui,Arial,sans-serif; }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:var(--htmlbg)}
-body{font-family:'Rajdhani',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;font-size:17px}
+body{font-family:var(--font-b);background:var(--bg);color:var(--txt);line-height:1.6;font-size:17px}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(1100px 560px at 82% -10%,var(--glow1),transparent 60%),
              radial-gradient(820px 460px at -8% 18%,var(--glow2),transparent 55%);}
 .wrap{max-width:860px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
-h1,h2,h3,.brand{font-family:'Orbitron',sans-serif}
+h1,h2,h3,.brand{font-family:var(--font-h)}
 a{color:var(--acc);text-decoration:none}
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:var(--nav);border-bottom:1px solid var(--brd2)}
 .nav-in{display:flex;align-items:center;gap:12px;height:60px;flex-wrap:wrap}
@@ -53,17 +56,17 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:var(-
 .sw{width:20px;height:20px;border-radius:50%;border:1px solid var(--brd2);cursor:pointer;padding:0}
 .sw.on{box-shadow:0 0 0 2px var(--acc)}
 .lang{display:flex;gap:2px;border:1px solid var(--brd);border-radius:20px;overflow:hidden}
-.lang button{background:none;border:none;color:var(--txt2);padding:5px 10px;font-family:'Orbitron';font-size:11px;font-weight:700;cursor:pointer}
+.lang button{background:none;border:none;color:var(--txt2);padding:5px 10px;font-family:var(--font-h);font-size:11px;font-weight:700;cursor:pointer}
 .lang button.on{background:var(--acc);color:var(--btxt)}
 
 .hero{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:center;padding:50px 0 30px}
 .photo{width:220px;height:270px;border-radius:18px;object-fit:cover;border:1px solid var(--brd);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px var(--gl);background:var(--card)}
-.photo.noimg{display:flex;align-items:center;justify-content:center;font-family:'Orbitron';font-size:64px;color:var(--acc);font-weight:900}
-.hero .role{color:var(--acc);font-family:'Orbitron';font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.photo.noimg{display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:64px;color:var(--acc);font-weight:900}
+.hero .role{color:var(--acc);font-family:var(--font-h);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .hero h1{font-size:clamp(26px,4.5vw,40px);font-weight:800;margin-bottom:10px}
 .hero .tagline{color:var(--txt2);font-size:18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{font-family:'Orbitron';font-size:11px;letter-spacing:.5px;padding:6px 12px;border:1px solid var(--brd);border-radius:20px;color:var(--txt2)}
+.chip{font-family:var(--font-h);font-size:11px;letter-spacing:.5px;padding:6px 12px;border:1px solid var(--brd);border-radius:20px;color:var(--txt2)}
 
 section{padding:26px 0}
 h2{font-size:22px;margin-bottom:12px}
