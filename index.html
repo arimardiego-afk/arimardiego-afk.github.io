@@ -176,7 +176,11 @@ section{padding:66px 0}
 .price li{padding:6px 0;color:var(--txt);font-size:15px;display:flex;gap:10px;align-items:center}
 .price li::before{content:"✓";color:var(--acc);font-weight:900}
 .pay-btns{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-.pay-btns .btn{justify-content:center}
+.pay-btns .btn{justify-content:center;width:100%}
+#buyEmail{padding:13px 15px;border-radius:10px;border:1px solid var(--brd);background:var(--card2);color:var(--txt);font-size:16px;font-family:var(--font-b);text-align:center}
+#buyEmail::placeholder{color:var(--txt3)}
+#buyEmail:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--glow1)}
+.pay-err{color:#ff6b6b;font-size:13px;text-align:center;margin-top:-4px}
 .pay-note{margin-top:16px;padding:14px 16px;border:1px dashed var(--brd);border-radius:12px;color:var(--txt2);font-size:14px;text-align:left;line-height:1.5}
 .pay-note b{color:var(--txt)}
 .pay-steps{margin:8px 0 0 0;padding-left:18px}
@@ -334,7 +338,9 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
       <li data-i="pr4">Atualizações incluídas</li>
     </ul>
     <div class="pay-btns">
-      <a class="btn pri" href="https://prometeu-ativacao.organizadordeaulas-prometeu.workers.dev/comprar" target="_blank" rel="noopener" data-i="pr-buy">Comprar agora — US$ 5 (R$ 25)</a>
+      <input id="buyEmail" type="email" inputmode="email" autocomplete="email" data-i="pr-email-ph" placeholder="Seu e-mail (para receber o código)">
+      <button class="btn pri" id="buyBtn" data-i="pr-buy">Comprar agora — US$ 5 (R$ 25)</button>
+      <div id="buyErr" class="pay-err" data-i="pr-email-err" style="display:none">Digite um e-mail válido para receber o código.</div>
       <a class="btn sec" href="https://arimardiego-afk.github.io/organizador-de-aulas/" target="_blank" rel="noopener" data-i="pr-cta">Testar 14 dias grátis</a>
     </div>
     <div class="pay-note">
@@ -478,6 +484,8 @@ const I={
   pr3:['Ver e exportar sempre disponível','Viewing & export always available','Ver y exportar siempre disponible','查看与导出始终可用'],
   pr4:['Atualizações incluídas','Updates included','Actualizaciones incluidas','包含更新'],
   'pr-buy':['Comprar agora — US$ 5 (R$ 25)','Buy now — US$ 5','Comprar ahora — US$ 5','立即购买 — US$ 5'],
+  'pr-email-ph':['Seu e-mail (para receber o código)','Your email (to receive the code)','Tu correo (para recibir el código)','你的邮箱（用于接收激活码）'],
+  'pr-email-err':['Digite um e-mail válido para receber o código.','Enter a valid email to receive the code.','Escribe un correo válido para recibir el código.','请输入有效的邮箱以接收激活码。'],
   'pr-cta':['Testar 14 dias grátis','Try 14 days free','Probar 14 días gratis','免费试用 14 天'],
   'pay-h':['Como funciona a ativação','How activation works','Cómo funciona la activación','如何激活'],
   'pay-s1':['Pague com Pix ou cartão pelo botão acima (Mercado Pago).','Pay by card via the button above (Mercado Pago).','Paga con tarjeta mediante el botón de arriba (Mercado Pago).','点击上方按钮，用银行卡付款（Mercado Pago）。'],
@@ -556,7 +564,8 @@ function setL(l){
   const i=LANGS.indexOf(l);
   document.documentElement.lang=LANG_HTML[l];
   document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
-  document.querySelectorAll('[data-i]').forEach(el=>{const v=I[el.getAttribute('data-i')];if(v&&v[i]!=null)el.innerHTML=v[i];});
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=I[el.getAttribute('data-i')];if(!v||v[i]==null)return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v[i];else el.innerHTML=v[i];});
   updateShots(); updateHeroVideo();
   try{localStorage.setItem(LKEY,l);}catch(e){}
 }
@@ -571,6 +580,20 @@ function setTheme(t){
 }
 document.querySelectorAll('#lang button').forEach(b=>b.onclick=()=>setL(b.dataset.l));
 document.querySelectorAll('#themes .sw').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+/* Comprar: pede o e-mail (para receber o código) e leva ao checkout da nossa aplicação */
+(function(){
+  const btn=document.getElementById('buyBtn'); if(!btn)return;
+  const WORKER='https://prometeu-ativacao.organizadordeaulas-prometeu.workers.dev/comprar';
+  const ok=e=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
+  btn.onclick=()=>{
+    const be=document.getElementById('buyEmail'), err=document.getElementById('buyErr');
+    const em=(be.value||'').trim();
+    if(!ok(em)){err.style.display='block';be.focus();return;}
+    err.style.display='none';
+    window.open(WORKER+'?email='+encodeURIComponent(em),'_blank','noopener');
+  };
+  document.getElementById('buyEmail').addEventListener('keydown',ev=>{if(ev.key==='Enter')btn.click();});
+})();
 buildMarquee();
 (function(){
   let l='pt',t='P',seen=null;
