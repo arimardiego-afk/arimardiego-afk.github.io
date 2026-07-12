@@ -46,7 +46,7 @@ html.t-L{ --bg:#F0EDE8;--bg2:#e7e2da;--card:#ffffff;--card2:#faf7f2;
   --font-h:'Segoe UI',system-ui,Arial,sans-serif;--font-b:'Segoe UI',system-ui,Arial,sans-serif; }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:var(--htmlbg)}
+html{scroll-behavior:smooth;background:var(--htmlbg);-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
 body{font-family:var(--font-b);background:var(--bg);color:var(--txt);line-height:1.55;overflow-x:hidden;font-size:17px}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(1200px 600px at 80% -10%,var(--glow1),transparent 60%),
@@ -77,6 +77,10 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:var(-
 .theme-tip{position:absolute;top:calc(100% + 12px);right:-8px;background:var(--card2);border:1px solid var(--acc);border-radius:10px;padding:11px 16px;font-size:16px;font-weight:700;color:var(--txt);white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 20px var(--gl);opacity:0;pointer-events:none;transition:opacity .25s;z-index:60}
 .theme-tip::before{content:"";position:absolute;top:-6px;right:40px;width:10px;height:10px;background:var(--card2);border-left:1px solid var(--acc);border-top:1px solid var(--acc);transform:rotate(45deg)}
 .theme-tip.show{opacity:1}
+@media(max-width:720px){
+  .theme-tip{position:fixed;left:50%;right:auto;top:auto;margin-top:14px;transform:translateX(-50%);white-space:normal;text-align:center;max-width:calc(100vw - 28px);width:max-content}
+  .theme-tip::before{display:none}
+}
 @media (prefers-reduced-motion:no-preference){
   .themes.intro .sw{animation:swpulse 1.1s ease-in-out infinite}
   .themes.intro .sw:nth-child(2){animation-delay:.12s}
@@ -222,6 +226,14 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
   .install{grid-template-columns:1fr}
   .phone{order:-1}
 }
+@media(max-width:480px){
+  body{font-size:16px}
+  section{padding:44px 0}
+  .hero{padding:32px 0 24px;gap:28px}
+  .sec-h{margin-bottom:28px}
+  .phone{width:246px}
+  .price{padding:26px 20px}
+}
 </style>
 </head>
 <body>
@@ -290,7 +302,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
   <div class="grid">
     <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H7a2 2 0 0 1-2-2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3 data-i="feat1t">Hierarquia de 5 níveis</h3><p data-i="feat1p">Matéria → Série/Ano → Aula → Capítulo → Vídeo. Cada aula no seu lugar, fácil de achar.</p></div>
     <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a12 12 0 0 0 8.5 3 12 12 0 0 1-8.5 15 12 12 0 0 1-8.5-15A12 12 0 0 0 12 3"/></svg></div><h3 data-i="feat2t">100% offline e privado</h3><p data-i="feat2p">Os dados ficam só no seu aparelho. Nada é enviado para a internet — nem precisa dela.</p></div>
-    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"/><path d="M9 9h1M9 13h6M9 17h6"/></svg></div><h3 data-i="feat3t">Resumos e anexos</h3><p data-i="feat3p">Resumo por vídeo (até 3 páginas), materiais citados e documentos (PDF, imagem, Word) anexados.</p></div>
+    <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"/><path d="M9 9h1M9 13h6M9 17h6"/></svg></div><h3 data-i="feat3t">Resumos e anexos</h3><p data-i="feat3p">Cada vídeo tem um campo para você escrever ou colar o seu resumo (até 3 páginas) — o app não gera resumos sozinho. Anexe também materiais citados e documentos (PDF, imagem, Word).</p></div>
     <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6"/><path d="M18 12V7a2 2 0 0 0-2-2h-2"/><path d="M8 3h4v3H8z"/><path d="M8 11h4M8 15h3"/><circle cx="16.5" cy="17.5" r="2.5"/></svg></div><h3 data-i="feat4t">Relatórios Word e PDF</h3><p data-i="feat4p">Exporte a estrutura completa da série ou o resumo de um vídeo em um clique.</p></div>
     <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0-18c4.97 0 9 3.58 9 8 0 2.2-1.8 4-4 4h-2.5a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="12.5" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/></svg></div><h3 data-i="feat5t">5 temas visuais</h3><p data-i="feat5p">Do claro suave ao HUD sci-fi ciano do Prometeu. Escolha o que combina com você.</p></div>
     <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h7M9 3v2c0 4.4-2.2 8-5 8"/><path d="M5 9c0 2.1 3 3.9 6.7 4"/><path d="M12 20l4-9 4 9M19.1 18h-6.2"/></svg></div><h3 data-i="feat6t">4 idiomas</h3><p data-i="feat6p">Português (Brasil e Portugal), inglês, espanhol e chinês (中文) — troca com um toque.</p></div>
@@ -450,7 +462,7 @@ const I={
   feat2t:['100% offline e privado','100% offline & private','100% sin conexión y privado','100% 离线且私密'],
   feat2p:['Os dados ficam só no seu aparelho. Nada é enviado para a internet — nem precisa dela.','Data stays only on your device. Nothing is sent online — and it doesn’t need to be.','Los datos quedan solo en tu dispositivo. Nada se envía a internet — ni hace falta.','数据仅存于本机，不会上传网络 —— 也无需联网。'],
   feat3t:['Resumos e anexos','Summaries & attachments','Resúmenes y adjuntos','摘要与附件'],
-  feat3p:['Resumo por vídeo (até 3 páginas), materiais citados e documentos (PDF, imagem, Word) anexados.','Per-video summary (up to 3 pages), cited materials and attached documents (PDF, image, Word).','Resumen por vídeo (hasta 3 páginas), materiales citados y documentos (PDF, imagen, Word) adjuntos.','每个视频的摘要（最多 3 页）、引用的教材和附加文档（PDF、图片、Word）。'],
+  feat3p:['Cada vídeo tem um campo para você escrever ou colar o seu resumo (até 3 páginas) — o app não gera resumos sozinho. Anexe também materiais citados e documentos (PDF, imagem, Word).','Each video has a field where you write or paste your own summary (up to 3 pages) — the app does not generate summaries by itself. You can also attach cited materials and documents (PDF, image, Word).','Cada vídeo tiene un campo para que escribas o pegues tu propio resumen (hasta 3 páginas) — la app no genera resúmenes por sí sola. Adjunta también materiales citados y documentos (PDF, imagen, Word).','每个视频都有一个摘要栏，由你自己撰写或粘贴摘要（最多 3 页）——应用不会自动生成摘要。还可附上引用的教材和文档（PDF、图片、Word）。'],
   feat4t:['Relatórios Word e PDF','Word & PDF reports','Informes Word y PDF','Word 与 PDF 报告'],
   feat4p:['Exporte a estrutura completa da série ou o resumo de um vídeo em um clique.','Export the full grade structure or a video summary in one click.','Exporta la estructura completa del curso o el resumen de un vídeo con un clic.','一键导出整个年级的结构或某个视频的摘要。'],
   feat5t:['5 temas visuais','5 visual themes','5 temas visuales','5 种视觉主题'],
