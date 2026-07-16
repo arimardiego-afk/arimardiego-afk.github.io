@@ -92,6 +92,41 @@ section{padding:30px 0}
 .price small{font-size:14px;color:var(--txt2);font-family:var(--font-b);font-weight:400}
 footer{border-top:1px solid var(--brd2);padding:26px 0 50px;color:var(--txt3);font-size:14px;text-align:center;margin-top:26px}
 @media(max-width:860px){ .grid3{grid-template-columns:1fr} .grid2{grid-template-columns:1fr} }
+/* Alerta de topo — como não pagar juros à toa */
+.alert-top{border:2px solid var(--warn);border-radius:16px;padding:22px 24px;margin:24px 0 8px;background:linear-gradient(180deg,rgba(251,191,36,.10),transparent)}
+.alert-top h2{font-size:clamp(19px,3vw,25px);margin:0 0 6px;color:var(--txt)}
+.alert-top .lead{color:var(--txt2);font-size:15px;margin-bottom:8px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 6px}
+@media(max-width:760px){ .cmp{grid-template-columns:1fr} }
+.cmp-col{border:1px solid var(--brd);border-radius:14px;padding:14px;background:var(--card)}
+.cmp-col.bad{border-color:#ff6b81;box-shadow:0 0 0 1px rgba(255,107,129,.25) inset}
+.cmp-col.good{border-color:var(--ok);box-shadow:0 0 0 1px rgba(52,211,153,.25) inset}
+.cmp-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-h);font-weight:700;font-size:14px;margin-bottom:10px}
+.cmp-tag.bad{color:#ff6b81}.cmp-tag.good{color:var(--ok)}
+.cmp-tag .ball{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+.cmp-tag.bad .ball{background:#e0435a}.cmp-tag.good .ball{background:#0f9d63}
+.cmp-cap{font-size:13px;color:var(--txt2);margin-top:10px}
+/* Reprodução da tela do Mercado Pago */
+.mp{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e2e2;color:#1a1a2a;font-family:'Segoe UI',system-ui,Arial,sans-serif}
+.mp .mp-top{padding:10px 14px;border-bottom:1px solid #eee;font-size:11px;color:#888;display:flex;align-items:center;gap:6px}
+.mp .mp-body{padding:14px}
+.mp .mp-title{font-size:13px;font-weight:600;color:#333;margin-bottom:10px}
+.mp .row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:#555}
+.mp .row.total{border-top:1px solid #eee;margin-top:6px;padding-top:8px;font-weight:800;color:#111;font-size:15px}
+.mp .row .iof{color:#c62828}
+.mp .opt{border:1px solid #e2e2e2;border-radius:9px;padding:9px 11px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.mp .opt.sel{border-color:#2d7ff9;box-shadow:0 0 0 2px rgba(45,127,249,.2)}
+.mp .opt.sel-bad{border-color:#e0435a;box-shadow:0 0 0 2px rgba(224,67,90,.2)}
+.mp .opt .cet{font-size:10px;color:#e0435a}
+.mp .opt .radio{width:15px;height:15px;border-radius:50%;border:2px solid #2d7ff9;flex:0 0 15px;position:relative}
+.mp .opt.sel-bad .radio{border-color:#e0435a}
+.mp .opt .radio::after{content:"";position:absolute;inset:2.5px;border-radius:50%;background:#2d7ff9}
+.mp .opt.sel-bad .radio::after{background:#e0435a}
+.mp .credito{margin-top:9px;border-radius:9px;padding:11px;background:linear-gradient(120deg,#22b7c9,#1786c9);color:#fff;font-size:12px}
+.mp .credito .lc{display:inline-block;background:#fff;color:#0a6;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;margin-top:6px}
+.mp .pay{margin-top:11px;background:#5b3df5;color:#fff;text-align:center;border-radius:9px;padding:10px;font-weight:700;font-size:13px}
+.mp .mp-pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+.mp .mp-pill.pix{background:#e6f4ea;color:#0a7a3d}
 </style>
 </head>
 <body>
@@ -129,6 +164,60 @@ footer{border-top:1px solid var(--brd2);padding:26px 0 50px;color:var(--txt3);fo
     <div class="badge" data-i="b4">💳 <b>Pague uma vez</b>, use para sempre</div>
   </div>
 </header>
+
+<section class="wrap">
+  <div class="alert-top">
+    <div class="eyebrow" data-i="at-eye">Atenção antes de pagar</div>
+    <h2 data-i="at-h">Como pagar os R$ 25 certos (e não pagar juros à toa)</h2>
+    <p class="lead" data-i="at-lead">Se o seu aparelho já tem conta do Mercado Pago, a tela pode vir com a <b>"Linha de Crédito"</b> pré-escolhida — ela cobra <b>juros e IOF</b> e o total passa de R$ 25. Compare as duas telas e escolha sempre <b>Pix ou cartão</b>. Essa tela é do Mercado Pago; não temos como removê-la.</p>
+
+    <div class="cmp">
+      <!-- TELA ERRADA -->
+      <div class="cmp-col bad">
+        <div class="cmp-tag bad"><span class="ball">✗</span> <span data-i="tag-bad">Assim NÃO — cobra juros</span></div>
+        <div class="mp">
+          <div class="mp-top">🛍️ Organizador de Aulas — licença vitalícia</div>
+          <div class="mp-body">
+            <div class="row"><span data-i="mp-buy">Sua compra</span><span>R$ 25</span></div>
+            <div class="row"><span class="iof" data-i="mp-iof">Juros e IOF</span><span class="iof">R$ 6,14</span></div>
+            <div class="row total"><span data-i="mp-total">Total</span><span>R$ 31,14</span></div>
+            <div class="opt sel-bad"><span class="radio"></span><span>1x R$ 31,14 <span class="cet">CET: 887,78%</span></span></div>
+            <div class="credito"><b data-i="mp-lc1">Use agora e pague depois</b><br><span class="lc" data-i="mp-lc2">LINHA DE CRÉDITO</span></div>
+            <div class="pay" data-i="mp-pay">Pagar</div>
+          </div>
+        </div>
+        <div class="cmp-cap" data-i="cap-bad">Total <b>R$ 31,14</b> — você pagaria <b>R$ 6,14 a mais</b> em juros/IOF. Foi o que apareceu no teste pelo iPhone.</div>
+      </div>
+
+      <!-- TELA CERTA -->
+      <div class="cmp-col good">
+        <div class="cmp-tag good"><span class="ball">✓</span> <span data-i="tag-good">Assim SIM — valor certo</span></div>
+        <div class="mp">
+          <div class="mp-top">🛍️ Organizador de Aulas — licença vitalícia</div>
+          <div class="mp-body">
+            <div class="row"><span data-i="mp-buy2">Sua compra</span><span>R$ 25</span></div>
+            <div class="row total"><span data-i="mp-total2">Total</span><span>R$ 25,00</span></div>
+            <div class="opt sel"><span class="radio"></span><span><span class="mp-pill pix">Pix</span> &nbsp;R$ 25,00</span></div>
+            <div class="opt"><span class="radio" style="border-color:#bbb"></span><span data-i="mp-card">Cartão de crédito · à vista</span></div>
+            <div class="pay" style="background:#0f9d63" data-i="mp-pay2">Pagar R$ 25,00</div>
+          </div>
+        </div>
+        <div class="cmp-cap" data-i="cap-good">Total <b>R$ 25,00</b>, sem juros. Escolha <b>Pix</b> (ou cartão à vista) e, se perguntarem, <b>continue sem entrar</b> na conta.</div>
+      </div>
+    </div>
+
+    <div class="hl" style="margin-top:16px">
+      <h3 data-i="m0">💡 Dicas para a tela de pagamento (Mercado Pago)</h3>
+      <ul>
+        <li data-i="m1">📧 O código de ativação chega <b>no e-mail que você digitar</b> na compra (não no da conta do Mercado Pago). Confira também a caixa de <b>spam</b>.</li>
+        <li data-i="m2">💳 Se o seu aparelho já tem conta do Mercado Pago, pode aparecer a pergunta se quer <b>entrar com a sua conta</b> — dá para <b>continuar sem entrar</b>, como convidado.</li>
+        <li data-i="m3">⚠️ Entrando com conta, a <b>"Linha de Crédito"</b> do Mercado Pago pode vir pré-escolhida — ela cobra <b>juros e IOF</b> e o total passa de R$ 25. <b>Escolha Pix ou cartão</b> para pagar o valor certo. Essa tela é do Mercado Pago; não temos como removê-la.</li>
+        <li data-i="m4">🔑 Recebeu o código? No app: menu <b>☰ → Ativar / Comprar</b> → cole o código → <b>Ativar</b>.</li>
+        <li data-i="m5">🆘 Problemas ou o código não chegou? Escreva para <b>organizadordeaulas.prometeu@gmail.com</b> — respondemos e enviamos o código manualmente.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <section class="wrap" id="instalar">
   <div class="sec-h">
@@ -238,15 +327,8 @@ footer{border-top:1px solid var(--brd2);padding:26px 0 50px;color:var(--txt3);fo
     <button class="btn" id="buyBtn" data-i="buy">Comprar agora — Pix ou cartão</button>
     <div class="note" data-i="buy-note">Pagamento seguro pelo Mercado Pago.</div>
   </div>
-  <div class="hl" style="max-width:720px;margin:18px auto 0">
-    <h3 data-i="m0">💡 Dicas para a tela de pagamento (Mercado Pago)</h3>
-    <ul>
-      <li data-i="m1">📧 O código de ativação chega <b>no e-mail que você digitar aqui</b> (não no da conta do Mercado Pago). Confira também a caixa de <b>spam</b>.</li>
-      <li data-i="m2">💳 Se o seu aparelho já tem conta do Mercado Pago, pode aparecer a pergunta se quer <b>entrar com a sua conta</b> — dá para <b>continuar sem entrar</b>, como convidado.</li>
-      <li data-i="m3">⚠️ Entrando com conta, a <b>"Linha de Crédito"</b> do Mercado Pago pode vir pré-escolhida — ela cobra <b>juros e IOF</b> e o total passa de R$ 25. <b>Escolha Pix ou cartão</b> para pagar o valor certo. Essa tela é do Mercado Pago; não temos como removê-la.</li>
-      <li data-i="m4">🔑 Recebeu o código? No app: menu <b>☰ → Ativar / Comprar</b> → cole o código → <b>Ativar</b>.</li>
-      <li data-i="m5">🆘 Problemas ou o código não chegou? Escreva para <b>organizadordeaulas.prometeu@gmail.com</b> — respondemos e enviamos o código manualmente.</li>
-    </ul>
+  <div class="hl warn" style="max-width:720px;margin:18px auto 0">
+    <p data-i="rev">⚠️ <b>Na tela do Mercado Pago, escolha Pix ou cartão</b> para pagar R$ 25 certos — não a "Linha de Crédito" (juros/IOF). Veja as telas comparadas no <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><b>topo desta página</b></a>.</p>
   </div>
 </section>
 
@@ -261,6 +343,36 @@ const I={
   nav7:['Desenvolvedor','Developer','Desarrollador','开发者'], nav8:['Tablet','Tablet','Tablet','平板'],
   nav9:['Comprar','Buy','Comprar','购买'],
   eyebrow:['Comprar · Testar grátis','Buy · Try for free','Comprar · Probar gratis','购买 · 免费试用'],
+  'at-eye':['Atenção antes de pagar','Before you pay','Atención antes de pagar','付款前请注意'],
+  'at-h':['Como pagar os R$ 25 certos (e não pagar juros à toa)','How to pay the right R$ 25 (and avoid needless interest)','Cómo pagar los R$ 25 correctos (y no pagar intereses de más)','如何正确支付 R$ 25（避免多付利息）'],
+  'at-lead':['Se o seu aparelho já tem conta do Mercado Pago, a tela pode vir com a <b>"Linha de Crédito"</b> pré-escolhida — ela cobra <b>juros e IOF</b> e o total passa de R$ 25. Compare as duas telas e escolha sempre <b>Pix ou cartão</b>. Essa tela é do Mercado Pago; não temos como removê-la.',
+            'If your device already has a Mercado Pago account, the screen may come with the <b>"Credit Line"</b> pre-selected — it charges <b>interest and taxes</b> and the total goes above R$ 25. Compare both screens and always pick <b>Pix or card</b>. That screen is Mercado Pago\'s; we can\'t remove it.',
+            'Si tu equipo ya tiene cuenta de Mercado Pago, la pantalla puede venir con la <b>"Línea de Crédito"</b> preseleccionada — cobra <b>intereses e impuestos</b> y el total sube de R$ 25. Compara las dos pantallas y elige siempre <b>Pix o tarjeta</b>. Esa pantalla es de Mercado Pago; no podemos quitarla.',
+            '如果你的设备已登录 Mercado Pago 账户，页面可能默认选中<b>"信用额度"</b>——它会收取<b>利息和税费</b>，总额会超过 R$ 25。请对比两张截图，始终选择 <b>Pix 或银行卡</b>。该页面属于 Mercado Pago，我们无法移除。'],
+  'tag-bad':['Assim NÃO — cobra juros','NOT like this — charges interest','Así NO — cobra intereses','不要这样——会收利息'],
+  'tag-good':['Assim SIM — valor certo','Like THIS — right amount','Así SÍ — valor correcto','这样才对——金额正确'],
+  'mp-buy':['Sua compra','Your purchase','Tu compra','您的购买'],
+  'mp-buy2':['Sua compra','Your purchase','Tu compra','您的购买'],
+  'mp-iof':['Juros e IOF','Interest and taxes','Intereses e impuestos','利息和税费'],
+  'mp-total':['Total','Total','Total','合计'],
+  'mp-total2':['Total','Total','Total','合计'],
+  'mp-lc1':['Use agora e pague depois','Buy now, pay later','Usa ahora y paga después','先用后付'],
+  'mp-lc2':['LINHA DE CRÉDITO','CREDIT LINE','LÍNEA DE CRÉDITO','信用额度'],
+  'mp-pay':['Pagar','Pay','Pagar','支付'],
+  'mp-pay2':['Pagar R$ 25,00','Pay R$ 25.00','Pagar R$ 25,00','支付 R$ 25,00'],
+  'mp-card':['Cartão de crédito · à vista','Credit card · in full','Tarjeta de crédito · en una cuota','信用卡 · 一次性'],
+  'cap-bad':['Total <b>R$ 31,14</b> — você pagaria <b>R$ 6,14 a mais</b> em juros/IOF. Foi o que apareceu no teste pelo iPhone.',
+             'Total <b>R$ 31.14</b> — you\'d pay <b>R$ 6.14 more</b> in interest/taxes. This is what showed up in the iPhone test.',
+             'Total <b>R$ 31,14</b> — pagarías <b>R$ 6,14 de más</b> en intereses/impuestos. Es lo que apareció en la prueba con iPhone.',
+             '合计 <b>R$ 31,14</b>——你会多付 <b>R$ 6,14</b> 的利息/税费。这正是 iPhone 测试时出现的情况。'],
+  'cap-good':['Total <b>R$ 25,00</b>, sem juros. Escolha <b>Pix</b> (ou cartão à vista) e, se perguntarem, <b>continue sem entrar</b> na conta.',
+              'Total <b>R$ 25.00</b>, no interest. Pick <b>Pix</b> (or card in full) and, if asked, <b>continue without signing in</b>.',
+              'Total <b>R$ 25,00</b>, sin intereses. Elige <b>Pix</b> (o tarjeta en una cuota) y, si preguntan, <b>continúa sin entrar</b> en la cuenta.',
+              '合计 <b>R$ 25,00</b>，无利息。请选择 <b>Pix</b>（或一次性银行卡），若被询问，<b>不登录继续</b>。'],
+  rev:['⚠️ <b>Na tela do Mercado Pago, escolha Pix ou cartão</b> para pagar R$ 25 certos — não a "Linha de Crédito" (juros/IOF). Veja as telas comparadas no <a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;"><b>topo desta página</b></a>.',
+       '⚠️ <b>On the Mercado Pago screen, choose Pix or card</b> to pay the right R$ 25 — not the "Credit Line" (interest/taxes). See the compared screens at the <a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;"><b>top of this page</b></a>.',
+       '⚠️ <b>En la pantalla de Mercado Pago, elige Pix o tarjeta</b> para pagar los R$ 25 correctos — no la "Línea de Crédito" (intereses/impuestos). Mira las pantallas comparadas al <a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;"><b>inicio de esta página</b></a>.',
+       '⚠️ <b>在 Mercado Pago 页面，请选择 Pix 或银行卡</b>以正确支付 R$ 25——不要选"信用额度"（利息/税费）。在<a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;"><b>本页顶部</b></a>查看对比截图。'],
   h1:['Teste grátis por 14 dias — do seu jeito','Try it free for 14 days — your way','Prueba gratis 14 días — a tu manera','免费试用 14 天——按你的方式'],
   lead:['Sem anúncios, sem assinatura, sem criar conta. Use tudo por 14 dias; depois, um pagamento único de US$ 5 (R$ 25) libera o app para sempre.',
         'No ads, no subscription, no account needed. Use everything for 14 days; then a one-time US$ 5 payment unlocks the app forever.',
