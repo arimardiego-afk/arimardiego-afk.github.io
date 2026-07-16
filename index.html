@@ -244,6 +244,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
     <div class="nav-links">
       <a href="#recursos" data-i="nav1">Recursos</a>
       <a href="#preco" data-i="nav3">Preço</a>
+      <a href="comprar.html" data-i="nav9">Comprar</a>
       <a href="galeria.html" data-i="nav6">Galeria</a>
       <a href="tablet.html" data-i="nav8">Tablet</a>
       <a href="manual.html" data-i="nav5">Manual</a>
@@ -273,7 +274,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
       <span data-i="f1">MATÉRIA</span><i>›</i><span data-i="f2">SÉRIE</span><i>›</i><span data-i="f3">AULA</span><i>›</i><span data-i="f4">CAPÍTULO</span><i>›</i><span data-i="f5">VÍDEO</span>
     </div>
     <div class="cta">
-      <a class="btn pri" href="https://arimardiego-afk.github.io/organizador-de-aulas/" target="_blank" rel="noopener" data-i="cta1">▶ Testar grátis (14 dias)</a>
+      <a class="btn pri" href="comprar.html" data-i="cta1">▶ Testar grátis (14 dias)</a>
       <a class="btn sec" href="#preco" data-i="cta2">Comprar · US$ 5</a>
     </div>
   </div>
@@ -345,6 +346,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
     <div class="sub" data-i="pr-sub">pagamento único · sem assinatura</div>
     <ul>
       <li data-i="pr1">14 dias grátis com tudo liberado</li>
+      <li data-i="pr5">Sem anúncios — nunca</li>
       <li data-i="pr2">Seus dados nunca ficam bloqueados</li>
       <li data-i="pr3">Ver e exportar sempre disponível</li>
       <li data-i="pr4">Atualizações incluídas</li>
@@ -353,7 +355,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
       <input id="buyEmail" type="email" inputmode="email" autocomplete="email" data-i="pr-email-ph" placeholder="Seu e-mail (para receber o código)">
       <button class="btn pri" id="buyBtn" data-i="pr-buy">Comprar agora — US$ 5 (R$ 25)</button>
       <div id="buyErr" class="pay-err" data-i="pr-email-err" style="display:none">Digite um e-mail válido para receber o código.</div>
-      <a class="btn sec" href="https://arimardiego-afk.github.io/organizador-de-aulas/" target="_blank" rel="noopener" data-i="pr-cta">Testar 14 dias grátis</a>
+      <a class="btn sec" href="comprar.html" data-i="pr-cta">Testar 14 dias grátis</a>
     </div>
     <div class="pay-note">
       <b data-i="pay-h">Como funciona a ativação</b>
@@ -371,6 +373,7 @@ footer{border-top:1px solid var(--brd2);padding:40px 0 60px;margin-top:30px}
     <div class="eyebrow" data-i="s4e">Instalar</div>
     <h2 data-i="s4h">No celular, tablet ou computador</h2>
   </div>
+  <p style="text-align:center;margin:-8px 0 18px"><a href="comprar.html" data-i="s4link">Ver o tutorial completo — download do app, ícone na tela e onde ficam os seus dados →</a></p>
   <div class="install">
     <div class="icard">
       <h3 data-i="i1h">📱 Android / Tablet (recomendado)</h3>
@@ -436,6 +439,9 @@ const I={
   nav6:['Galeria','Gallery','Galería','图库'],
   nav7:['Desenvolvedor','Developer','Desarrollador','开发者'],
   nav8:['Tablet','Tablet','Tablet','平板'],
+  nav9:['Comprar','Buy','Comprar','购买'],
+  s4link:['Ver o tutorial completo — download do app, ícone na tela e onde ficam os seus dados →','See the full tutorial — app download, home-screen icon and where your data lives →','Ver el tutorial completo — descarga de la app, ícono en pantalla y dónde quedan tus datos →','查看完整教程——应用下载、屏幕图标以及数据保存位置 →'],
+  pr5:['Sem anúncios — nunca','No ads — ever','Sin anuncios — nunca','无广告——永远'],
   eyebrow:['PWA · 100% Offline','PWA · 100% Offline','PWA · 100% Offline','PWA · 100% 离线'],
   h1:['Organize suas aulas em vídeo, <span class="cy">do jeito de um professor.</span>','Organize your video lessons <span class="cy">the way a teacher would.</span>','Organiza tus clases en vídeo <span class="cy">como lo haría un profesor.</span>','<span class="cy">像老师一样</span>管理你的视频课程。'],
   lead:['Um caderno digital para quem ensina com vídeos: cinco níveis do geral ao específico, resumos, anexos e relatórios — tudo salvo no seu aparelho, funcionando sem internet.','A digital notebook for teaching with videos: five levels from broad to specific, summaries, attachments and reports — all saved on your device, working without internet.','Un cuaderno digital para enseñar con vídeos: cinco niveles de lo general a lo específico, resúmenes, adjuntos e informes — todo guardado en tu dispositivo, sin internet.','为视频教学打造的数字笔记本：从概括到具体的五级结构、摘要、附件和报告 —— 全部保存在你的设备上，无需联网。'],
@@ -450,7 +456,7 @@ const I={
   mc2s:['2 séries · 31 aulas','2 grades · 31 lessons','2 cursos · 31 clases','2 个年级 · 31 节课'],
   mc3t:['BIOLOGIA','BIOLOGY','BIOLOGÍA','生物'],
   mc3s:['1 série · 18 aulas','1 grade · 18 lessons','1 curso · 18 clases','1 个年级 · 18 节课'],
-  t1:['🔒 <b>Sem contas</b>, sem anúncios','🔒 <b>No accounts</b>, no ads','🔒 <b>Sin cuentas</b>, sin anuncios','🔒 <b>无需账号</b>，无广告'],
+  t1:['🚫 <b>Sem anúncios</b>, sem contas','🚫 <b>No ads</b>, no accounts','🚫 <b>Sin anuncios</b>, sin cuentas','🚫 <b>无广告</b>，无需账号'],
   t2:['📴 Funciona <b>offline</b>','📴 Works <b>offline</b>','📴 Funciona <b>sin conexión</b>','📴 <b>离线</b>可用'],
   t3:['💾 Dados <b>no seu aparelho</b>','💾 Data <b>on your device</b>','💾 Datos <b>en tu dispositivo</b>','💾 数据<b>存于本机</b>'],
   t4:['🌐 <b>4 idiomas</b> (中文)','🌐 <b>4 languages</b> (中文)','🌐 <b>4 idiomas</b> (中文)','🌐 <b>4 种语言</b>（含中文）'],
