@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HD Externo Online — aplicativo pessoal de backup</title>
+<meta name="description" content="Aplicativo pessoal que monta as pastas do próprio Google Drive como uma unidade de disco no computador, usando o rclone.">
+<style>
+  :root{
+    --fundo:#0f1218; --cartao:#171c25; --borda:#262d3a;
+    --texto:#e7ecf3; --suave:#a5b0c0; --realce:#5aa9ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--fundo); color:var(--texto);
+    font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    padding:32px 16px;
+  }
+  main{max-width:720px;margin:0 auto}
+  h1{font-size:1.9rem;line-height:1.2;margin:0 0 6px}
+  .sub{color:var(--suave);margin:0 0 28px}
+  section{
+    background:var(--cartao); border:1px solid var(--borda);
+    border-radius:14px; padding:20px 22px; margin-bottom:16px;
+  }
+  h2{font-size:1.1rem;margin:0 0 10px}
+  ul{margin:0;padding-left:20px}
+  li{margin:6px 0}
+  a{color:var(--realce)}
+  code{
+    background:#0b0e13;border:1px solid var(--borda);border-radius:6px;
+    padding:1px 6px;font-size:.92em
+  }
+  footer{color:var(--suave);font-size:.9rem;text-align:center;margin-top:24px}
+  @media (max-width:480px){ body{padding:20px 14px} h1{font-size:1.5rem} }
+</style>
+</head>
+<body>
+<main>
+  <h1>HD Externo Online</h1>
+  <p class="sub">Aplicativo pessoal que transforma as pastas do próprio Google Drive
+  em uma unidade de disco no computador.</p>
+
+  <section>
+    <h2>O que ele faz</h2>
+    <p>O <strong>HD Externo Online</strong> é um uso particular do programa livre
+    <a href="https://rclone.org" rel="noopener">rclone</a>. Ele conecta a conta do
+    Google Drive do próprio dono e apresenta esses arquivos como uma letra de disco
+    no Windows (por exemplo, <code>N:</code>), para que as pastas da nuvem possam ser
+    abertas e copiadas como se estivessem no computador.</p>
+  </section>
+
+  <section>
+    <h2>Quem usa</h2>
+    <ul>
+      <li>É um aplicativo <strong>de uso pessoal</strong>, sem cadastro e sem site de serviço.</li>
+      <li>Cada pessoa só acessa a <strong>própria conta</strong>, que ela mesma autoriza.</li>
+      <li>Não há servidor: o programa roda apenas no computador de quem o instala.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Dados e privacidade</h2>
+    <p>O aplicativo não coleta, não envia e não guarda dados em nenhum servidor.
+    O detalhe completo está na
+    <a href="privacidade.html">Política de Privacidade</a>.</p>
+  </section>
+
+  <section>
+    <h2>Como retirar o acesso</h2>
+    <p>A autorização pode ser cancelada a qualquer momento em
+    <a href="https://myaccount.google.com/permissions" rel="noopener">
+    myaccount.google.com/permissions</a>, removendo o aplicativo da lista.</p>
+  </section>
+
+  <footer>Projeto pessoal · sem fins comerciais</footer>
+</main>
+</body>
+</html>
