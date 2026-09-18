@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidade — HD Externo Online</title>
+<meta name="description" content="Política de privacidade do aplicativo pessoal HD Externo Online, que usa a API do Google Drive pelo rclone.">
+<style>
+  :root{
+    --fundo:#0f1218; --cartao:#171c25; --borda:#262d3a;
+    --texto:#e7ecf3; --suave:#a5b0c0; --realce:#5aa9ff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--fundo); color:var(--texto);
+    font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    padding:32px 16px;
+  }
+  main{max-width:760px;margin:0 auto}
+  h1{font-size:1.75rem;line-height:1.25;margin:0 0 4px}
+  .data{color:var(--suave);margin:0 0 26px;font-size:.95rem}
+  section{
+    background:var(--cartao); border:1px solid var(--borda);
+    border-radius:14px; padding:20px 22px; margin-bottom:16px;
+  }
+  h2{font-size:1.08rem;margin:0 0 10px}
+  ul{margin:0;padding-left:20px}
+  li{margin:6px 0}
+  a{color:var(--realce)}
+  code{
+    background:#0b0e13;border:1px solid var(--borda);border-radius:6px;
+    padding:1px 6px;font-size:.92em;word-break:break-all
+  }
+  .destaque{border-color:#3c5a80}
+  footer{color:var(--suave);font-size:.9rem;text-align:center;margin-top:24px}
+  @media (max-width:480px){ body{padding:20px 14px} h1{font-size:1.4rem} }
+</style>
+</head>
+<body>
+<main>
+  <h1>Política de Privacidade — HD Externo Online</h1>
+  <p class="data">Versão de 17 de setembro de 2026 · <a href="./">voltar ao início</a></p>
+
+  <section>
+    <h2>1. Quem somos</h2>
+    <p><strong>HD Externo Online</strong> é um aplicativo pessoal, sem fins comerciais,
+    criado para uso próprio do seu autor. Ele usa o programa livre
+    <a href="https://rclone.org" rel="noopener">rclone</a> para apresentar as pastas do
+    Google Drive do próprio usuário como uma unidade de disco no computador.
+    Contato: <a href="mailto:arimardiego@gmail.com">arimardiego@gmail.com</a>.</p>
+  </section>
+
+  <section>
+    <h2>2. Que dados o aplicativo acessa</h2>
+    <p>Somente os arquivos e pastas da conta do Google que a própria pessoa autoriza,
+    por meio da permissão <code>https://www.googleapis.com/auth/drive</code>. Esse
+    acesso serve a uma única finalidade: <strong>listar, abrir, enviar e baixar os
+    arquivos do próprio usuário</strong> enquanto a unidade de disco estiver montada.</p>
+    <p>O aplicativo <strong>não</strong> acessa contatos, agenda, e-mail, fotos nem
+    dados de outros serviços do Google.</p>
+  </section>
+
+  <section>
+    <h2>3. Onde os dados ficam</h2>
+    <ul>
+      <li><strong>Não existe servidor.</strong> O programa roda apenas no computador de
+      quem o instala; nada trafega por sistemas do autor.</li>
+      <li>A ficha de acesso (token) fica gravada <strong>somente no computador do
+      usuário</strong>, no arquivo de configuração do rclone.</li>
+      <li>Os arquivos que o usuário abre podem ficar guardados temporariamente em uma
+      pasta de cache no próprio computador, para que a unidade funcione mais rápido.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. O que o aplicativo NÃO faz</h2>
+    <ul>
+      <li>Não coleta, não transmite e não armazena dados pessoais em nenhum servidor.</li>
+      <li>Não compartilha, vende, aluga nem cede dados a terceiros.</li>
+      <li>Não usa os dados para publicidade.</li>
+      <li>Não usa os dados para treinar modelos de inteligência artificial.</li>
+      <li>Não permite que pessoas leiam os dados, salvo quando a lei exigir.</li>
+    </ul>
+  </section>
+
+  <section class="destaque">
+    <h2>5. Uso limitado dos dados do Google</h2>
+    <p>O uso que o HD Externo Online faz das informações recebidas das APIs do Google
+    obedece à
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">
+    Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os
+    requisitos de <em>Uso Limitado</em> (<em>Limited Use</em>).</p>
+  </section>
+
+  <section>
+    <h2>6. Como retirar o acesso e apagar os dados</h2>
+    <p>A autorização pode ser cancelada a qualquer momento em
+    <a href="https://myaccount.google.com/permissions" rel="noopener">
+    myaccount.google.com/permissions</a>. A partir daí o aplicativo perde o acesso
+    imediatamente. Para apagar o que ficou no computador, basta remover o remoto do
+    rclone e a pasta de cache — nenhuma cópia permanece em outro lugar.</p>
+  </section>
+
+  <section>
+    <h2>7. Crianças</h2>
+    <p>O aplicativo não se destina a menores de 13 anos e não coleta dados deles.</p>
+  </section>
+
+  <section>
+    <h2>8. Mudanças nesta política</h2>
+    <p>Qualquer alteração passa a valer na data indicada no topo desta página, que é
+    o endereço oficial e permanente desta política.</p>
+  </section>
+
+  <footer>HD Externo Online · projeto pessoal, sem fins comerciais</footer>
+</main>
+</body>
+</html>
